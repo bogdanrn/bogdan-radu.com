@@ -12,24 +12,15 @@ export async function generateStaticParams() {
   }));
 }
 
-export async function generateMetadata({
-  params,
-}): Promise<Metadata | undefined> {
+export async function generateMetadata({ params }): Promise<Metadata | undefined> {
   const { slug } = await params;
   let post = getBlogPosts().find((post) => post.slug === slug);
   if (!post) {
     return;
   }
 
-  let {
-    title,
-    publishedAt: publishedTime,
-    summary: description,
-    image,
-  } = post.metadata;
-  let ogImage = image
-    ? image
-    : `${metaData.baseUrl}/og?title=${encodeURIComponent(title)}`;
+  let { title, publishedAt: publishedTime, summary: description, image } = post.metadata;
+  let ogImage = image ? image : `${metaData.baseUrl}/og?title=${encodeURIComponent(title)}`;
 
   return {
     title,
@@ -72,28 +63,22 @@ export default async function Blog({ params }) {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "BlogPosting",
-            headline: post.metadata.title,
-            datePublished: post.metadata.publishedAt,
-            dateModified: post.metadata.publishedAt,
-            description: post.metadata.summary,
-            image: post.metadata.image
-              ? `${metaData.baseUrl}${post.metadata.image}`
-              : `/og?title=${encodeURIComponent(post.metadata.title)}`,
-            url: `${metaData.baseUrl}/blog/${post.slug}`,
-            author: {
+            "headline": post.metadata.title,
+            "datePublished": post.metadata.publishedAt,
+            "dateModified": post.metadata.publishedAt,
+            "description": post.metadata.summary,
+            "image": post.metadata.image ? `${metaData.baseUrl}${post.metadata.image}` : `/og?title=${encodeURIComponent(post.metadata.title)}`,
+            "url": `${metaData.baseUrl}/blog/${post.slug}`,
+            "author": {
               "@type": "Person",
-              name: metaData.name,
+              "name": metaData.name,
             },
           }),
         }}
       />
-      <h1 className="title mb-3 font-medium text-2xl">
-        {post.metadata.title}
-      </h1>
+      <h1 className="title mb-3 font-medium text-2xl">{post.metadata.title}</h1>
       <div className="flex justify-between items-center mt-2 mb-8 text-medium">
-        <p className="text-sm text-neutral-600 dark:text-neutral-400">
-          {formatDate(post.metadata.publishedAt)}
-        </p>
+        <p className="text-sm text-neutral-600 dark:text-neutral-400">{formatDate(post.metadata.publishedAt)}</p>
       </div>
       <article className="prose prose-quoteless prose-neutral dark:prose-invert">
         <CustomMDX source={post.content} />

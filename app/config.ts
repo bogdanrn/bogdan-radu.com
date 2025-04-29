@@ -1,16 +1,15 @@
 export const metaData = {
-  baseUrl: "https://nextfolio-template.vercel.app/",
-  title: "Nextfolio",
-  name: "Sirius",
-  ogImage: "/opengraph-image.png",
-  description:
-    "A clean, fast, and lightweight portfolio template built with Next.js, Vercel, and Tailwind CSS for optimal performance.",
+  baseUrl: "https://bogdan-radu.com/",
+  title: "Bogdan Radu",
+  name: "Bogdan Radu",
+  ogImage: "/opengraph-image.webp",
+  description: "Full-stack software engineer and entrepreneur with 10+ years experience in web applications. Successfully built and scaled multiple startups.",
 };
 
 export const socialLinks = {
-  twitter: "https://x.com/1tssirius",
-  github: "https://github.com/1msirius/Nextfolio",
-  instagram: "https://www.instagram.com/",
-  linkedin: "https://www.linkedin.com/",
-  email: "mailto:example@gmail.com",
+  twitter: "https://x.com/bogdanrn",
+  github: "https://github.com/bogdanrn",
+  instagram: "https://www.instagram.com/bogdanrn",
+  linkedin: "https://www.linkedin.com/in/bogdanrn",
+  email: "mailto:bogdan@bogdan-radu.com",
 };
